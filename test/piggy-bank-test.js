@@ -98,7 +98,14 @@ describe("PiggyBank", () => {
         const [owner, addr1] = await ethers.getSigners();
 
         await expect(contract.connect(addr1).close()).to.be.reverted;
-        //await expect(contract.connect(owner).close()).to.be.reverted;
+        await expect(contract.connect(owner).close());
+    });
+
+    it("should allow only owner retrieve total balance", async function () {
+        const [owner, addr1] = await ethers.getSigners();
+
+        await expect(contract.connect(addr1).getBalance()).to.be.reverted;
+        await expect(contract.connect(owner).getBalance());
     });
 
     it("should destroy contract and revert all requests", async function () {

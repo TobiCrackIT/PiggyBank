@@ -1,6 +1,6 @@
-# Basic Sample Hardhat Project
+# Piggy Bank
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+This project will demonstrate the evolution of banking from the use of piggybank to present day DeFi. Each branch of the repository will demonstrate a point in the evolution of banking including the use of piggybanks, co-operative savings(Ajo/Esusu), Banks, Defi and others.
 
 Try running some of the following tasks:
 

@@ -31,16 +31,15 @@ contract PiggyBank {
         //check if address has any funds
         require(amount>0, "You don't have any funds to withdraw");
         
+        //transfer ether balance to receiver
         (bool sent, ) = receiver.call{value: amount}("");
         require(sent, "Failed to send ether");
         balances[msg.sender]=0;
 
         //emit event
         emit Withdraw(amount);
-
     }
 
-    
     function close() external {
         require(msg.sender == owner, "You are not the owner of this PiggyBank");
 

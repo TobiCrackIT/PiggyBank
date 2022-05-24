@@ -49,6 +49,10 @@ contract PiggyBank {
         selfdestruct(payable(msg.sender));
     }
 
+    function getUserBalance() external view returns(uint) {
+        return balances[msg.sender];
+    }
+
     /**
     * @dev Retrieves the total balance of the Smart Contract.
     * @return address(this).balance The total balance of the Smart Contract.

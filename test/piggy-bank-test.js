@@ -94,6 +94,24 @@ describe("PiggyBank", () => {
         await expect(contract.connect(owner).withdraw()).to.emit(contract, "Withdraw").withArgs(amount);
     });
 
+    it("should return user's account balance", async function () {
+        const [owner, addr1] = await ethers.getSigners();
+
+        await owner.sendTransaction({
+            to: contract.address,
+            value: amount,
+        });
+
+        await addr1.sendTransaction({
+            to: contract.address,
+            value: amount,
+        });
+
+        const balance = await contract.connect(owner).getUserBalance();
+
+        assert.equal(balance, 1000000000000000000);
+    });
+
     it("should allow only owner close smart contract", async function () {
         const [owner, addr1] = await ethers.getSigners();
 
